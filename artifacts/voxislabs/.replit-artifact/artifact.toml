@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "VoxisLabs"
+version = "1.0.0"
+id = "artifacts/voxislabs"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18086
+
+[services.development]
+run = "pnpm --filter @workspace/voxislabs run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/voxislabs", "run", "build" ]
+publicDir = "artifacts/voxislabs/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18086"
+BASE_PATH = "/"
