@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "wouter";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,10 +23,10 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-3 z-10" data-testid="nav-logo">
+        <Link href="/" className="flex items-center gap-3 z-10" data-testid="nav-logo">
           <img src="/voxislabs-logo.png" alt="VoxisLabs" className="h-8 w-auto" />
           <span className="text-xl font-bold tracking-tight text-foreground" style={{ fontFamily: "var(--font-display)" }}>VoxisLabs</span>
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-8">
           <a href="#platforms" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Platforms</a>

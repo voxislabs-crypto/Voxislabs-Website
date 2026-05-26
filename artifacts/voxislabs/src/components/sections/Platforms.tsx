@@ -1,38 +1,45 @@
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 const platforms = [
   {
     title: "Voxis",
+    slug: "voxis",
     tagline: "The intelligence layer that remembers.",
     description: "The adaptive personality engine and foundational AI operating layer. Advanced memory structures and dynamic interaction capabilities across all platforms.",
     color: "from-blue-500 to-cyan-400",
   },
   {
     title: "Merlin",
+    slug: "merlin",
     tagline: "Pattern recognition meets personal insight.",
     description: "Astrological and symbolic behavioral forecasting engine. Deep pattern analysis and personalized insights based on symbolic frameworks.",
     color: "from-purple-500 to-fuchsia-400",
   },
   {
     title: "Council of Echoes",
+    slug: "council",
     tagline: "Many minds. One answer.",
     description: "Multi-LLM collaborative reasoning environment. Multiple AI models debate, negotiate, and synthesize superior solutions across coding, strategy, philosophy, and complex problem-solving.",
     color: "from-emerald-500 to-teal-400",
   },
   {
     title: "DreamTales & DreamCast",
+    slug: "dreamtales",
     tagline: "Stories that know your name.",
     description: "LLM-powered interactive storytelling platforms. DreamTales: personalized choose-your-own-adventure for children. DreamCast: mature, narrative-driven interactive stories for adults.",
     color: "from-orange-500 to-rose-400",
   },
   {
     title: "TrustWave",
+    slug: "trustwave",
     tagline: "Your voice, at scale.",
     description: "Voice-enabled customer retention platform. Personalized, first-name voice messages at scale for businesses to strengthen relationships and drive action.",
     color: "from-indigo-500 to-blue-400",
   },
   {
     title: "Contract Secure",
+    slug: "contract-secure",
     tagline: "Sign with certainty.",
     description: "Mobile-first digital contract creation and verification. Rapid, legally-binding agreements with identity verification, location data, and digital signatures.",
     color: "from-slate-400 to-slate-200",
@@ -87,8 +94,8 @@ export function Platforms() {
             >
               <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 bg-gradient-to-br ${platform.color}`}></div>
               
-              <div className="relative z-10">
-                <div className="mb-6">
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="mb-6 flex-grow">
                   <h3 className="text-2xl font-bold mb-2 text-foreground" style={{ fontFamily: "var(--font-display)" }}>
                     {platform.title}
                   </h3>
@@ -96,9 +103,18 @@ export function Platforms() {
                     {platform.tagline}
                   </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed mb-6">
                   {platform.description}
                 </p>
+                <div className="mt-auto pt-4 border-t border-border/50">
+                  <Link 
+                    href={`/platforms/${platform.slug}`} 
+                    className="inline-flex items-center text-sm font-medium hover:text-primary transition-colors"
+                    data-testid={`link-learn-more-${platform.slug}`}
+                  >
+                    Learn More <span className="ml-2">→</span>
+                  </Link>
+                </div>
               </div>
             </motion.div>
           ))}
